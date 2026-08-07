@@ -14,7 +14,7 @@ jobs:
     name: fmt + clippy + build + test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # rust-toolchain.toml pins the toolchain + components; rustup installs
       # it on first cargo invocation. This step just pre-warms it explicitly.
