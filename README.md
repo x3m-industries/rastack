@@ -106,6 +106,14 @@ duplicate smuggling, state-machine double calls), `tests/signal.rs` kills a
 real process with a real SIGTERM, `tests/config.rs` drives real processes
 through env/file/cli config scenarios.
 
+## Contributing
+
+Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the
+one-time setup (repo-managed git hooks, commit template), the Conventional
+Commits format, and the quality gates. Security reports go through
+[SECURITY.md](SECURITY.md), community standards live in
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
 ## License
 
 [MIT](LICENSE)
