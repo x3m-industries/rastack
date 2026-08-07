@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Enforces Conventional Commits on the first line of the message.
+set -euo pipefail
+
+message_file="$1"
+first_line="$(head -n 1 "$message_file")"
+
+# Merge/revert/fixup commits made by git itself pass through.
+case "$first_line" in
+  Merge\ * | Revert\ * | fixup!\ * | squash!\ *) exit 0 ;;
+esac
+
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9-]+\))?(!)?: .{1,}'
+
+if ! grep -Eq "$pattern" <<<"$first_line"; then
+  echo "commit-msg: not a conventional commit title:" >&2
+  echo "  $first_line" >&2
+  echo "" >&2
+  echo "expected: <type>(<scope>)?: <summary>" >&2
+  echo "  types: feat fix docs style refactor perf test build ci chore revert" >&2
+  echo "  example: feat(axum): deliver router via add_routes" >&2
+  exit 1
+fi
+
+if [ "${#first_line}" -gt 72 ]; then
+  echo "commit-msg: title is ${#first_line} chars, keep it <= 72" >&2
+  exit 1
+fi

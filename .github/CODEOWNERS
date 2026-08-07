@@ -1,0 +1,7 @@
+# Default owners for everything in the repo — requested for review on
+# every pull request that touches matching files.
+* @stevenceuppens
+
+# The stack core is the heart of every app: extra scrutiny.
+/packages/rastack/src/stack/ @stevenceuppens
+/packages/rastack/src/config.rs @stevenceuppens

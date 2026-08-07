@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Full test suite before anything leaves the machine.
+# Skip in an emergency with: git push --no-verify
+set -euo pipefail
+
+echo "pre-push: cargo test --workspace"
+cargo test --workspace

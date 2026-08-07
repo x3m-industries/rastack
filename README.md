@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-2024%20edition-orange.svg)](rust-toolchain.toml)
 
-A provider-based application stack for Rust services. A `Stack` owns a set
+A provider-based atomic application stack for Rust services. A `Stack` owns a set
 of **providers** (an axum server, a database client, the logging pipeline),
 brings them up in order, keeps them running, and — no matter how the app
 ends — tears them down gracefully in reverse order.
@@ -51,8 +51,8 @@ curl http://localhost:8080/health
   nicely (CLI-style apps).
 - **Layered config (12-factor)** — every config struct loads from
   defaults ← ENV ← config file ← cli args by convention: field `port`
-  reads `PORT`, file key `port`, `--port=...`. CLI and file beat ENV *by
-  design* (baked-in image config is not env-overridable), and a shadowed
+  reads `PORT`, file key `port`, `--port=...`. CLI and file beat ENV _by
+  design_ (baked-in image config is not env-overridable), and a shadowed
   ENV var logs a warning.
 - **Logging built in** — the embedded tracing provider installs the global
   subscriber before anything else happens; `LOG_FORMAT=json` makes every
@@ -63,10 +63,10 @@ curl http://localhost:8080/health
 Every stack embeds two core providers, available for injection into your
 own providers:
 
-| Provider | Delivers | Access |
-|---|---|---|
+| Provider          | Delivers                                           | Access            |
+| ----------------- | -------------------------------------------------- | ----------------- |
 | `TracingProvider` | logging/tracing config (`LOG_FORMAT`, `LOG_LEVEL`) | `stack.tracing()` |
-| `AppProvider` | app identity (`APP_NAME`, or the executable name) | `stack.app()` |
+| `AppProvider`     | app identity (`APP_NAME`, or the executable name)  | `stack.app()`     |
 
 Optional providers so far: `AxumProvider` (HTTP server: `PORT`). Planned:
 `MongodbProvider`, ...
@@ -105,6 +105,14 @@ Testing philosophy: table-driven tests everywhere, plus adversarial suites
 duplicate smuggling, state-machine double calls), `tests/signal.rs` kills a
 real process with a real SIGTERM, `tests/config.rs` drives real processes
 through env/file/cli config scenarios.
+
+## Contributing
+
+Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the
+one-time setup (repo-managed git hooks, commit template), the Conventional
+Commits format, and the quality gates. Security reports go through
+[SECURITY.md](SECURITY.md), community standards live in
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License
 

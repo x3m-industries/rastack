@@ -1,0 +1,18 @@
+# <type>(<scope>): <summary>
+# |<----------- max 72 characters ----------->|
+
+# Body (optional): explain WHAT changed and WHY, not how. Wrap at 72.
+
+# Footer (optional): "BREAKING CHANGE: ...", "Closes #123", ...
+
+# ── Conventional Commits ────────────────────────────────────────────
+# type:  feat | fix | docs | style | refactor | perf | test | build |
+#        ci | chore | revert
+# scope: stack | provider | config | app | axum | tracing | docs | ci
+#        (optional, lowercase)
+# breaking change: append ! after type/scope, e.g. feat(stack)!: ...
+#
+# Examples:
+#   feat(axum): deliver router via add_routes
+#   fix(stack): abort timed-out shutdown hooks
+#   docs: explain the strict provider order
