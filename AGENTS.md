@@ -15,7 +15,8 @@ cargo run --example app                         # run the demo app
 ```
 
 Toolchain is pinned in `rust-toolchain.toml`. CI runs the same gates
-(`.github/workflows/ci.yml`); git hooks in `.githooks/` mirror them.
+(`.github/workflows/ci.yml`); git hooks (sources in `.cargo-husky/hooks/`,
+auto-installed into `.git/hooks` by cargo-husky on `cargo test`) mirror them.
 
 ## Hard rules (enforced by lints — builds fail otherwise)
 
@@ -57,7 +58,7 @@ Toolchain is pinned in `rust-toolchain.toml`. CI runs the same gates
 
 ## Git
 
-- Conventional Commits, enforced by `.githooks/commit-msg`:
+- Conventional Commits, enforced by the `commit-msg` hook:
   `<type>(<scope>): <summary>` — types feat/fix/docs/style/refactor/perf/
   test/build/ci/chore/revert; scopes stack/provider/config/app/axum/
   tracing/docs/ci.

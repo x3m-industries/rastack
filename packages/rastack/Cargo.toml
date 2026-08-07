@@ -19,6 +19,9 @@ tracing.workspace = true
 tracing-subscriber.workspace = true
 
 [dev-dependencies]
+# Installs the repo git hooks (.cargo-husky/hooks) into .git/hooks on the
+# first `cargo test` — no manual setup for contributors.
+cargo-husky = { version = "1", default-features = false, features = ["user-hooks"] }
 tokio = { workspace = true, features = ["test-util"] }
 
 # Examples live at the workspace root (./examples) for visibility; Cargo only

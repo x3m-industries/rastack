@@ -9,15 +9,18 @@ the repo keeps you honest.
 ```sh
 git clone git@github.com:x3m-industries/rastack.git
 cd rastack
+cargo test --workspace
 
-# Repo-managed git hooks (fmt + clippy on commit, tests on push,
-# conventional-commit title check) and the commit message template:
-git config core.hooksPath .githooks
+# optional: use the commit message template
 git config commit.template .gitmessage
 ```
 
-The Rust toolchain is pinned in `rust-toolchain.toml` — rustup installs it
-(with rustfmt, clippy) automatically on the first `cargo` command.
+That's it. The Rust toolchain is pinned in `rust-toolchain.toml` (rustup
+installs it automatically), and the first `cargo test` also installs the
+repo git hooks into `.git/hooks` via [cargo-husky](https://github.com/rhysd/cargo-husky):
+fmt + clippy on commit, the full test suite on push, and a
+conventional-commit title check. Hook sources live in `.cargo-husky/hooks/`
+— edit there, and they reinstall on the next `cargo test`.
 
 ## Commit messages: Conventional Commits
 

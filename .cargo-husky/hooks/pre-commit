@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Source lives in .cargo-husky/hooks — edit there; reinstalls on `cargo test`.
 # Fast checks before every commit: formatting + lints.
 # Skip in an emergency with: git commit --no-verify
 set -euo pipefail

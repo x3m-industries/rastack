@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Source lives in .cargo-husky/hooks — edit there; reinstalls on `cargo test`.
 # Enforces Conventional Commits on the first line of the message.
 set -euo pipefail
 

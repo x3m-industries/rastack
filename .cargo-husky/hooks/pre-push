@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Source lives in .cargo-husky/hooks — edit there; reinstalls on `cargo test`.
 # Full test suite before anything leaves the machine.
 # Skip in an emergency with: git push --no-verify
 set -euo pipefail
