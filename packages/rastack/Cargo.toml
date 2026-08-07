@@ -1,0 +1,43 @@
+[package]
+name = "rastack"
+description = "Provider-based application stack: lifecycle, layered config, logging"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+axum.workspace = true
+clap.workspace = true
+figment.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["test-util"] }
+
+# Examples live at the workspace root (./examples) for visibility; Cargo only
+# auto-discovers package-local examples, so each one is declared explicitly.
+[[example]]
+name = "app"
+path = "../../examples/app.rs"
+
+# Runs as its own process so it can re-execute itself as a child app and
+# exercise real signal delivery (SIGTERM → graceful teardown).
+[[test]]
+name = "signal"
+harness = false
+
+# Same self-exec pattern: exercises real env vars, config files and cli
+# arguments end to end.
+[[test]]
+name = "config"
+harness = false
+
+[lints]
+workspace = true

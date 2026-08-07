@@ -1,0 +1,14 @@
+# Rust
+/target
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# Local config files (the app loads config.yaml/toml/json next to the exe)
+/config.yaml
+/config.toml
+/config.json
