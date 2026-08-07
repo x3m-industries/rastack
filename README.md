@@ -1,5 +1,9 @@
 # rastack — Rust App Stack
 
+[![CI](https://github.com/x3m-industries/rastack/actions/workflows/ci.yml/badge.svg)](https://github.com/x3m-industries/rastack/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/rust-2024%20edition-orange.svg)](rust-toolchain.toml)
+
 A provider-based application stack for Rust services. A `Stack` owns a set
 of **providers** (an axum server, a database client, the logging pipeline),
 brings them up in order, keeps them running, and — no matter how the app
